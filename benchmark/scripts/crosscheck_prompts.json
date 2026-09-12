@@ -1,0 +1,89 @@
+{
+  "meta": {
+    "purpose": "Greedy cross-check prompts: native runtime vs vLLM on MiniCPM5-2b (bf16)",
+    "notes": [
+      "Multi-turn cases keep assistant history text FIXED so both backends render byte-identical prompts through the same official chat template (assistant history without <think> gets an empty think block injected by the template, identically on both ends).",
+      "Categories: zh_knowledge x8, en_knowledge x6, code_gen x6, math x6, translation x4, mixed_zh_en x4, creative x4, commonsense x4, multi_turn_fixed_history x5 => 47 prompts.",
+      "Prompts kept from the 9-case pre-experiment (/tmp/opencode/cmp_ours.json) are reused verbatim for continuity."
+    ]
+  },
+  "prompts": [
+    { "id": "zh_01", "category": "zh_knowledge", "messages": [ { "role": "user", "content": "用三句话介绍长城。" } ] },
+    { "id": "zh_02", "category": "zh_knowledge", "messages": [ { "role": "user", "content": "解释什么是操作系统。" } ] },
+    { "id": "zh_03", "category": "zh_knowledge", "messages": [ { "role": "user", "content": "简述植物光合作用的基本过程。" } ] },
+    { "id": "zh_04", "category": "zh_knowledge", "messages": [ { "role": "user", "content": "为什么天空是蓝色的？请简要回答。" } ] },
+    { "id": "zh_05", "category": "zh_knowledge", "messages": [ { "role": "user", "content": "请简要介绍中国古代的四大发明。" } ] },
+    { "id": "zh_06", "category": "zh_knowledge", "messages": [ { "role": "user", "content": "什么是通货膨胀？它对普通人有什么影响？" } ] },
+    { "id": "zh_07", "category": "zh_knowledge", "messages": [ { "role": "user", "content": "简要说明人体血液循环系统是如何工作的。" } ] },
+    { "id": "zh_08", "category": "zh_knowledge", "messages": [ { "role": "user", "content": "介绍一下长江的地理特征与经济意义。" } ] },
+
+    { "id": "en_01", "category": "en_knowledge", "messages": [ { "role": "user", "content": "Explain what a neural network is in simple terms." } ] },
+    { "id": "en_02", "category": "en_knowledge", "messages": [ { "role": "user", "content": "What causes the seasons on Earth? Answer briefly." } ] },
+    { "id": "en_03", "category": "en_knowledge", "messages": [ { "role": "user", "content": "Summarize the key ideas of the industrial revolution in a short paragraph." } ] },
+    { "id": "en_04", "category": "en_knowledge", "messages": [ { "role": "user", "content": "What is the difference between TCP and UDP?" } ] },
+    { "id": "en_05", "category": "en_knowledge", "messages": [ { "role": "user", "content": "Briefly describe how a refrigerator keeps food cold." } ] },
+    { "id": "en_06", "category": "en_knowledge", "messages": [ { "role": "user", "content": "Who was Ada Lovelace and why is she important in computing history?" } ] },
+
+    { "id": "code_01", "category": "code_gen", "messages": [ { "role": "user", "content": "Write a Python function to compute fibonacci numbers." } ] },
+    { "id": "code_02", "category": "code_gen", "messages": [ { "role": "user", "content": "Complete this Python function:\n\ndef quicksort(arr):\n" } ] },
+    { "id": "code_03", "category": "code_gen", "messages": [ { "role": "user", "content": "用Python实现一个函数，判断一个字符串是否是回文。" } ] },
+    { "id": "code_04", "category": "code_gen", "messages": [ { "role": "user", "content": "Write a SQL query that finds the top 3 highest-paid employees in each department." } ] },
+    { "id": "code_05", "category": "code_gen", "messages": [ { "role": "user", "content": "Write a bash one-liner that counts the lines containing \"error\" in /var/log/syslog." } ] },
+    { "id": "code_06", "category": "code_gen", "messages": [ { "role": "user", "content": "Implement a JavaScript debounce function with brief comments." } ] },
+
+    { "id": "math_01", "category": "math", "messages": [ { "role": "user", "content": "1+1=?直接回答" } ] },
+    { "id": "math_02", "category": "math", "messages": [ { "role": "user", "content": "一个矩形长8宽5，求面积和周长。" } ] },
+    { "id": "math_03", "category": "math", "messages": [ { "role": "user", "content": "计算 (17 × 23) − 96 = ?" } ] },
+    { "id": "math_04", "category": "math", "messages": [ { "role": "user", "content": "Solve for x: 3x + 7 = 25." } ] },
+    { "id": "math_05", "category": "math", "messages": [ { "role": "user", "content": "A train travels 240 km in 3 hours. What is its average speed in km/h?" } ] },
+    { "id": "math_06", "category": "math", "messages": [ { "role": "user", "content": "2的10次方是多少？请简要说明计算过程。" } ] },
+
+    { "id": "tr_01", "category": "translation", "messages": [ { "role": "user", "content": "Translate to English: 今天天气很好。" } ] },
+    { "id": "tr_02", "category": "translation", "messages": [ { "role": "user", "content": "把这句话翻译成英文：学而不思则罔，思而不学则殆。" } ] },
+    { "id": "tr_03", "category": "translation", "messages": [ { "role": "user", "content": "Translate to Chinese: \"The quick brown fox jumps over the lazy dog.\"" } ] },
+    { "id": "tr_04", "category": "translation", "messages": [ { "role": "user", "content": "将下面的产品介绍翻译成英文：这款智能手表支持心率监测、睡眠分析和50米防水。" } ] },
+
+    { "id": "mix_01", "category": "mixed_zh_en", "messages": [ { "role": "user", "content": "用中文解释什么是 CUDA graph，then list 3 pros in English." } ] },
+    { "id": "mix_02", "category": "mixed_zh_en", "messages": [ { "role": "user", "content": "Translate to Chinese and then summarize in one English sentence: \"Machine learning is a subset of artificial intelligence that learns patterns from data.\"" } ] },
+    { "id": "mix_03", "category": "mixed_zh_en", "messages": [ { "role": "user", "content": "请用英文回答：中国的高铁系统有哪些优势？" } ] },
+    { "id": "mix_04", "category": "mixed_zh_en", "messages": [ { "role": "user", "content": "Explain \"内卷\" in Chinese first, then give the English term and one English example sentence." } ] },
+
+    { "id": "cre_01", "category": "creative", "messages": [ { "role": "user", "content": "写一首关于秋天的四行短诗。" } ] },
+    { "id": "cre_02", "category": "creative", "messages": [ { "role": "user", "content": "Write the opening paragraph of a sci-fi story about a city on Mars." } ] },
+    { "id": "cre_03", "category": "creative", "messages": [ { "role": "user", "content": "以“深夜的便利店”为开头，写一段50字左右的微型小说。" } ] },
+    { "id": "cre_04", "category": "creative", "messages": [ { "role": "user", "content": "Write a haiku about the ocean, then explain its imagery in one sentence." } ] },
+
+    { "id": "com_01", "category": "commonsense", "messages": [ { "role": "user", "content": "冰块放在热水里会怎样？为什么？" } ] },
+    { "id": "com_02", "category": "commonsense", "messages": [ { "role": "user", "content": "Why do we wear seatbelts in cars?" } ] },
+    { "id": "com_03", "category": "commonsense", "messages": [ { "role": "user", "content": "打雷时为什么先看到闪电后听到雷声？" } ] },
+    { "id": "com_04", "category": "commonsense", "messages": [ { "role": "user", "content": "If I put a metal spoon in the microwave, what happens and why?" } ] },
+
+    { "id": "multi_01", "category": "multi_turn_fixed_history", "messages": [
+      { "role": "user", "content": "我叫小明，今年25岁，住在上海，养了一只叫“豆豆”的猫。" },
+      { "role": "assistant", "content": "好的，我已经记住了你的信息。" },
+      { "role": "user", "content": "我叫什么名字？住在哪个城市？请直接回答。" }
+    ] },
+    { "id": "multi_02", "category": "multi_turn_fixed_history", "messages": [
+      { "role": "user", "content": "我最喜欢的颜色是蓝色，最喜欢的数字是7。" },
+      { "role": "assistant", "content": "好的，我已经记住了你的喜好。" },
+      { "role": "user", "content": "我最喜欢的颜色和数字分别是什么？请直接回答。" }
+    ] },
+    { "id": "multi_03", "category": "multi_turn_fixed_history", "messages": [
+      { "role": "user", "content": "帮我记住：我下周三要去北京出差。" },
+      { "role": "assistant", "content": "好的，我已经记住了你的安排。" },
+      { "role": "user", "content": "出差前我需要准备什么？" },
+      { "role": "assistant", "content": "建议你提前准备好身份证、电脑和充电器，并确认好车票和住宿。" },
+      { "role": "user", "content": "我下周三要做什么？请直接回答。" }
+    ] },
+    { "id": "multi_04", "category": "multi_turn_fixed_history", "messages": [
+      { "role": "user", "content": "My name is Emma and I work as a nurse in London." },
+      { "role": "assistant", "content": "Nice to meet you, Emma! I've noted that you work as a nurse in London." },
+      { "role": "user", "content": "What is my name and my job? Answer in one short sentence." }
+    ] },
+    { "id": "multi_05", "category": "multi_turn_fixed_history", "messages": [
+      { "role": "user", "content": "我告诉你一个秘密：我最喜欢吃火锅。" },
+      { "role": "assistant", "content": "好的，我已经记住了你的信息。" },
+      { "role": "user", "content": "根据我的口味，推荐一道适合今晚吃的菜，并说明理由。" }
+    ] }
+  ]
+}

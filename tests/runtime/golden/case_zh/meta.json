@@ -1,0 +1,15 @@
+{
+  "model": "openbmb/MiniCPM5-2B",
+  "prompt": "你好，请介绍一下你自己。",
+  "input_ids": [
+    0,
+    75828,
+    20309,
+    122379,
+    62100,
+    396
+  ],
+  "steps": 32,
+  "eos_step": null,
+  "dtype": "bf16-fp32acc"
+}

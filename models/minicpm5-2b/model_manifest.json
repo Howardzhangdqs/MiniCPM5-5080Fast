@@ -1,0 +1,25 @@
+{
+  "model": "openbmb/MiniCPM5-2B",
+  "revision": "3497c460c89e00520c3cfa2e73f49ab7647f1177",
+  "safetensors_sha256": "14fb8e7f0a18d53d1f239773758bf581cee7e456a4523a54622c3a245b64402c",
+  "safetensors_bytes": 5033557096,
+  "wpk_sha256": "1c4de160efcf790f832df29a448247a316519cf384cffd3f0c389a3d59a75c5d",
+  "wpk_bytes": 5033546752,
+  "sections": {
+    "count": 255,
+    "total_data_bytes": 5033512960,
+    "global_sections": 3,
+    "per_layer_sections": 6,
+    "toc_offset": 64,
+    "toc_entry_size": 132,
+    "data_start": 33792,
+    "alignment": 256,
+    "padding_bytes": 0
+  },
+  "precision": "bf16",
+  "kv_precision": "bf16",
+  "scale_scheme": "none",
+  "abi_version": "0x0002",
+  "target_sm": 120,
+  "generated_at": "2026-09-08T10:26:51Z"
+}

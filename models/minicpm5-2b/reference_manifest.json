@@ -1,0 +1,74 @@
+{
+  "model": "openbmb/MiniCPM5-2B",
+  "revision": "3497c460c89e00520c3cfa2e73f49ab7647f1177",
+  "fetched_at": "2026-09-08",
+  "source": "https://hf-mirror.com/openbmb/MiniCPM5-2B",
+  "architecture": {
+    "model_type": "llama",
+    "architectures": ["LlamaForCausalLM"],
+    "num_hidden_layers": 42,
+    "hidden_size": 2048,
+    "intermediate_size": 6144,
+    "num_attention_heads": 16,
+    "num_key_value_heads": 2,
+    "head_dim": 128,
+    "vocab_size": 130560,
+    "max_position_embeddings": 131072,
+    "rms_norm_eps": 1e-06,
+    "rope_theta": 5000000,
+    "rope_scaling": null,
+    "tie_word_embeddings": false,
+    "torch_dtype": "bfloat16",
+    "bos_token_id": 0,
+    "eos_token_id": [1, 130073],
+    "pad_token_id": 1
+  },
+  "generation_config": {
+    "do_sample": true,
+    "temperature": 1.0,
+    "top_p": 0.95,
+    "eos_token_id": [1, 130073],
+    "bos_token_id": 0,
+    "pad_token_id": 1
+  },
+  "files": {
+    "config.json": {
+      "bytes": 704,
+      "sha256": "59613157e5357d62bcb121e04cb90f2170b43d789b142380c12c3d4277d95180"
+    },
+    "generation_config.json": {
+      "bytes": 213,
+      "sha256": "9ac4f32e5f32358697a9f438a3ea89ef80e6ba786c72c49e932f9f21c122fdb1"
+    },
+    "tokenizer.json": {
+      "bytes": 9894271,
+      "sha256": "3e065a558a034185fe299917b398685c1facd0169a9eea1e629eb30c171fed81"
+    },
+    "tokenizer_config.json": {
+      "bytes": 94391,
+      "sha256": "e9b1064649e771d7a8e15637c68b2d2749724877ba3648bd74a4ece31c26303b"
+    },
+    "chat_template.jinja": {
+      "bytes": 9060,
+      "sha256": "cc945752db555d60949b16989df4ccfeb52a313d6b4b5c5229dd786e2e9fcf1c"
+    },
+    "special_tokens_map.json": {
+      "bytes": 551,
+      "sha256": "82d96d7a9e6ced037f12394b7ea6a5b02e6ca87e0d11edaa8d60d9be857ce7db"
+    },
+    "model.safetensors.index.json": {
+      "bytes": 31378,
+      "sha256": "6d839cd76e8395de548a0e6cc310386f66d1ecbb2c75d198a8dfd3d70892b756"
+    },
+    "model-00000-of-00001.safetensors": {
+      "bytes": 5033557096,
+      "sha256": "14fb8e7f0a18d53d1f239773758bf581cee7e456a4523a54622c3a245b64402c",
+      "status": "downloaded"
+    }
+  },
+  "runtime": {
+    "abi_version": "0x00020000",
+    "target_sm": 120,
+    "target_gpu": "NVIDIA GeForce RTX 5080"
+  }
+}

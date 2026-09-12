@@ -1,0 +1,12 @@
+[package]
+name = "minicpm-runtime"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+libloading.workspace = true
+thiserror.workspace = true
+anyhow.workspace = true
+minicpm-runtime-sys.workspace = true

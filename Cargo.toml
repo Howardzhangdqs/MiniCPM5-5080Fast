@@ -1,0 +1,46 @@
+[workspace]
+resolver = "2"
+members = [
+    "rust/minicpm-server",
+    "rust/minicpm-tokenizer",
+    "rust/minicpm-template",
+    "rust/minicpm-generation",
+    "rust/minicpm-scheduler",
+    "rust/minicpm-runtime",
+    "rust/minicpm-runtime-sys",
+    "rust/minicpm-metrics",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+rust-version = "1.85"
+
+[workspace.dependencies]
+anyhow = "1"
+thiserror = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokenizers = { version = "0.21", default-features = false, features = ["onig"] }
+minijinja = { version = "2", features = ["json", "builtins"] }
+tokio = { version = "1", features = ["full"] }
+tokio-stream = "0.1"
+futures = "0.3"
+axum = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "fmt"] }
+libloading = "0.8"
+clap = { version = "4", features = ["derive"] }
+
+minicpm-tokenizer = { path = "rust/minicpm-tokenizer", version = "0.1.0" }
+minicpm-template = { path = "rust/minicpm-template", version = "0.1.0" }
+minicpm-generation = { path = "rust/minicpm-generation", version = "0.1.0" }
+minicpm-scheduler = { path = "rust/minicpm-scheduler", version = "0.1.0" }
+minicpm-runtime = { path = "rust/minicpm-runtime", version = "0.1.0" }
+minicpm-runtime-sys = { path = "rust/minicpm-runtime-sys", version = "0.1.0" }
+minicpm-metrics = { path = "rust/minicpm-metrics", version = "0.1.0" }
+
+[profile.release]
+debug = 1
+lto = "thin"

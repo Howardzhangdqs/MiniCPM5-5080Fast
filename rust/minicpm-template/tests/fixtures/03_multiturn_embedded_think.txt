@@ -1,0 +1,13 @@
+<s><|im_start|>system
+You are a helpful assistant.<|im_end|>
+<|im_start|>user
+9.11 和 9.9 哪个大？<|im_end|>
+<|im_start|>assistant
+<think>
+9.11 = 9.11，9.9 = 9.90，因为 90 > 11，所以 9.9 更大。
+</think>
+
+9.9 更大。<|im_end|>
+<|im_start|>user
+那 9.11 和 9.11 相比呢？<|im_end|>
+<|im_start|>assistant

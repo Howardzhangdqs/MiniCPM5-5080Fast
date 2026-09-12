@@ -1,0 +1,17 @@
+[package]
+name = "minicpm-scheduler"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tokio.workspace = true
+anyhow.workspace = true
+minicpm-runtime.workspace = true
+minicpm-generation.workspace = true
+minicpm-metrics.workspace = true
+
+[dev-dependencies]
+# examples/concurrency_bench.rs（S4 并发基准）专用；不进 lib 依赖面。
+serde_json.workspace = true

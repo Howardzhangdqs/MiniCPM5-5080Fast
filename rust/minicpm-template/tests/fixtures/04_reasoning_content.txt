@@ -1,0 +1,13 @@
+<s><|im_start|>system
+You are a helpful assistant.<|im_end|>
+<|im_start|>user
+介绍一下你自己。<|im_end|>
+<|im_start|>assistant
+<think>
+用户让我做自我介绍，我应该简洁友好地回答。
+</think>
+
+我是 MiniCPM，很高兴认识你！<|im_end|>
+<|im_start|>user
+你能做什么？<|im_end|>
+<|im_start|>assistant

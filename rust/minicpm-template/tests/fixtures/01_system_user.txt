@@ -1,0 +1,5 @@
+<s><|im_start|>system
+You are MiniCPM, created by the MiniCPM Team.<|im_end|>
+<|im_start|>user
+你好，请帮我写一首关于秋天的短诗。<|im_end|>
+<|im_start|>assistant

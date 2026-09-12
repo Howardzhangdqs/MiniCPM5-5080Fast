@@ -1,0 +1,7 @@
+# 构建产物与大体量数据不进镜像/构建上下文
+target/
+build/
+benchmark/results/
+models/**/*.wpk
+*.safetensors
+.git/

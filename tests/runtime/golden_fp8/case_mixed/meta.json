@@ -1,0 +1,31 @@
+{
+  "model": "openbmb/MiniCPM5-2B",
+  "prompt": "用中文解释什么是 CUDA graph，then list 3 pros in English.",
+  "input_ids": [
+    0,
+    1066,
+    44338,
+    12778,
+    42013,
+    122315,
+    4245,
+    337,
+    14127,
+    2510,
+    242,
+    40,
+    7713,
+    310,
+    4133,
+    35
+  ],
+  "steps": 16,
+  "eos_step": null,
+  "dtype": "bf16-prefill + fp8-e4m3-decode (incl. lm_head) / fp32acc (P4 closeout mixed)",
+  "weights": "fp8-mixed",
+  "lm_head": {
+    "prefill_step0": "bf16",
+    "decode_steps": "fp8-dequant (e4m3->f32 dot, fp32 acc, scale applied post-accumulation, single RNE to bf16)",
+    "mirror_of": "native forward.cpp lm_head tail: T>1 -> gemm(1, V, H, w.lm_head, normed_last_row) [BF16]; T==1 && fp8_lm_head present -> launch_gemv_fp8 (fused prologue variant bit-identical); MC_FP8_LMHEAD_OFF=1 or absent dtype=2 section -> BF16"
+  }
+}

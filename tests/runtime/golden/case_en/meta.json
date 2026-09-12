@@ -1,0 +1,20 @@
+{
+  "model": "openbmb/MiniCPM5-2B",
+  "prompt": "Write a Python function to compute fibonacci numbers.",
+  "input_ids": [
+    0,
+    24934,
+    280,
+    21417,
+    1323,
+    317,
+    12167,
+    9032,
+    62669,
+    4330,
+    35
+  ],
+  "steps": 32,
+  "eos_step": null,
+  "dtype": "bf16-fp32acc"
+}

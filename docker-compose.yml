@@ -1,0 +1,53 @@
+name: minicpm5-rtx5080
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      # 构建期使用 host 网络，使 127.0.0.1:7890（mihomo）可达
+      network: host
+      args:
+        USER_UID: "1000"
+        USER_GID: "1000"
+        HTTP_PROXY: http://127.0.0.1:7890
+        HTTPS_PROXY: http://127.0.0.1:7890
+    image: minicpm5-rtx5080-dev:latest
+    container_name: minicpm5-dev
+    hostname: minicpm5-dev
+    restart: unless-stopped
+    # host 网络下 ports 映射无效；sshd 已在容器内直接监听 2301
+    gpus: all
+    network_mode: host
+    ipc: host
+    shm_size: "8gb"
+    working_dir: /workspace
+    # entrypoint 需 root 启动 sshd，随后自动降权为 dev；exec 进容器请用 -u dev
+    user: root
+    command: ["sleep", "infinity"]
+    volumes:
+      - .:/workspace
+      # 宿主机公钥只读挂载，密钥更新自动同步，ssh -p 2301 dev@yan5080 免密进容器
+      - /home/nuists517/.ssh/authorized_keys:/home/dev/.ssh/authorized_keys:ro
+      # Rust 工具链与缓存持久化，容器删除重建后不重装
+      - rustup-home:/opt/rustup
+      - cargo-home:/opt/cargo
+    # Nsight Compute 需要 SYS_ADMIN 与放宽 seccomp 才能采集性能计数器（计划第 19 节）
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - seccomp:unconfined
+    stdin_open: true
+    tty: true
+    environment:
+      # 运行期统一走宿主机 mihomo（host 网络下 127.0.0.1 可达）
+      - HTTP_PROXY=http://127.0.0.1:7890
+      - HTTPS_PROXY=http://127.0.0.1:7890
+      - http_proxy=http://127.0.0.1:7890
+      - https_proxy=http://127.0.0.1:7890
+      - NO_PROXY=localhost,127.0.0.1
+      - no_proxy=localhost,127.0.0.1
+
+volumes:
+  rustup-home:
+  cargo-home:

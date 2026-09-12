@@ -1,0 +1,27 @@
+[package]
+name = "minicpm-server"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+axum.workspace = true
+tokio.workspace = true
+tokio-stream.workspace = true
+futures.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tracing.workspace = true
+clap.workspace = true
+anyhow.workspace = true
+minicpm-tokenizer.workspace = true
+minicpm-template.workspace = true
+minicpm-generation.workspace = true
+minicpm-scheduler.workspace = true
+minicpm-runtime.workspace = true
+minicpm-metrics.workspace = true
+
+[dev-dependencies]
+tower = { version = "0.5", features = ["util"] }
+http-body-util = "0.1"

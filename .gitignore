@@ -1,0 +1,14 @@
+/target
+/build
+**/*.rs.bk
+models/**/*.safetensors
+models/**/*.wpk
+models/**/tokenizer.json
+models/**/weights.sha256
+benchmark/results/*.json
+benchmark/results/*.log
+.env
+.venv/
+.venv-vllm/
+__pycache__/
+*.pyc

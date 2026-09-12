@@ -1,0 +1,6 @@
+<s><|im_start|>system
+You are a helpful assistant.<|im_end|>
+<|im_start|>user
+解释一下重力。<|im_end|>
+<|im_start|>assistant
+<think>

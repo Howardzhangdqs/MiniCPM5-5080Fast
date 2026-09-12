@@ -1,0 +1,15 @@
+[package]
+name = "minicpm-template"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+minijinja = { workspace = true, features = ["preserve_order"] }
+serde.workspace = true
+serde_json = { workspace = true, features = ["preserve_order"] }
+thiserror.workspace = true
+
+[dev-dependencies]
+minicpm-tokenizer = { workspace = true }

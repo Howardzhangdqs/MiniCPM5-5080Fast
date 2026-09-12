@@ -1,0 +1,25 @@
+{
+  "model": "openbmb/MiniCPM5-2B",
+  "prompt": "用中文解释什么是 CUDA graph，then list 3 pros in English.",
+  "input_ids": [
+    0,
+    1066,
+    44338,
+    12778,
+    42013,
+    122315,
+    4245,
+    337,
+    14127,
+    2510,
+    242,
+    40,
+    7713,
+    310,
+    4133,
+    35
+  ],
+  "steps": 16,
+  "eos_step": null,
+  "dtype": "bf16-fp32acc"
+}

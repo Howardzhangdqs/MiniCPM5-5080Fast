@@ -1,0 +1,11 @@
+[package]
+name = "minicpm-tokenizer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+tokenizers.workspace = true
+thiserror.workspace = true
+serde_json.workspace = true
